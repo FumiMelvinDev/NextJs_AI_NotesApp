@@ -12,7 +12,7 @@ const Header = () => {
       style={{ boxShadow: shadow }}
     >
       <div className="flex w-full items-center justify-between px-4 py-2">
-        <h1 className="text-2xl font-bold">My App</h1>
+        <h1 className="text-2xl font-bold">AI Notes App</h1>
         <nav>
           <div className="flex items-center gap-4">
             {user ? (
