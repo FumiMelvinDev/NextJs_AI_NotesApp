@@ -5,10 +5,11 @@ import { toast } from "sonner";
 import { CardContent, CardFooter } from "./ui/card";
 import { Label } from "./ui/label";
 import { Input } from "./ui/input";
-import { useTransition } from "react";
+import { startTransition, useTransition } from "react";
 import { Button } from "./ui/button";
 import { Loader2 } from "lucide-react";
 import Link from "next/link";
+import { loginAction, signUpAction } from "@/actions/users";
 
 type Props = {
   type: "login" | "signup";
@@ -21,7 +22,28 @@ const AuthForm = ({ type }: Props) => {
   const [isPending, startIsTransiction] = useTransition();
 
   const handleSubmit = (formdata: FormData) => {
-    console.log("form submitted");
+    startTransition(async () => {
+      const email = formdata.get("email") as string;
+      const password = formdata.get("password") as string;
+
+      let errorMessage;
+      let toastMessage;
+
+      if (isLoginForm) {
+        errorMessage = (await loginAction(email, password)).errorMessage;
+        toastMessage = "Login successful";
+      } else {
+        errorMessage = (await signUpAction(email, password)).errorMessage;
+        toastMessage = "Signup successful";
+      }
+
+      if (!errorMessage) {
+        toast.success(toastMessage);
+        router.replace("/");
+      } else {
+        toast.error(errorMessage);
+      }
+    });
   };
 
   return (

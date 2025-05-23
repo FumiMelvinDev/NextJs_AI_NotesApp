@@ -3,9 +3,10 @@ import { Button } from "./ui/button";
 import Link from "next/link";
 import { ModeToggle } from "./DarkModeToggle";
 import LogoutButton from "./LogoutButton";
+import { getUser } from "@/auth/server";
 
-const Header = () => {
-  const user = 1;
+const Header = async () => {
+  const user = await getUser();
   return (
     <header
       className="relative flex h-20 w-full items-center justify-between bg-popover px-4 sm:px-6"
@@ -20,7 +21,7 @@ const Header = () => {
             ) : (
               <>
                 <Button asChild>
-                  <Link href="/login">Sign Up</Link>
+                  <Link href="/signup">Sign Up</Link>
                 </Button>
                 <Button asChild variant={"outline"}>
                   <Link href="/login">Sign In</Link>
