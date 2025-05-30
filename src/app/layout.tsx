@@ -3,6 +3,8 @@ import "./globals.css";
 import { ThemeProvider } from "@/providers/theme-provider";
 import Header from "@/components/Header";
 import { Toaster } from "@/components/ui/sonner";
+import { SidebarProvider } from "@/components/ui/sidebar";
+import { AppSidebar } from "@/components/Sidebar";
 
 export const metadata: Metadata = {
   title: "AI Notes App",
@@ -23,13 +25,16 @@ export default function RootLayout({
           enableSystem
           disableTransitionOnChange
         >
-          <div className="flex min-h-screen w-full flex-col">
-            <Header />
-            <main className=" flex flex-1 flex-col px-4 pt-6 xl:px-8">
-              {children}
-            </main>
-          </div>
-          <Toaster />
+          <SidebarProvider>
+            <AppSidebar />
+            <div className="flex min-h-screen w-full flex-col">
+              <Header />
+              <main className=" flex flex-1 flex-col px-4 pt-6 xl:px-8">
+                {children}
+              </main>
+            </div>
+            <Toaster />
+          </SidebarProvider>
         </ThemeProvider>
       </body>
     </html>

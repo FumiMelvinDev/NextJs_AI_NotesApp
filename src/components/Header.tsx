@@ -9,7 +9,7 @@ const Header = async () => {
   const user = await getUser();
   return (
     <header
-      className="relative flex h-20 w-full items-center justify-between bg-popover px-4 sm:px-6"
+      className="relative flex h-20 w-full items-center justify-between px-4 sm:px-6"
       style={{ boxShadow: shadow }}
     >
       <div className="flex w-full items-center justify-between px-4 py-2">
