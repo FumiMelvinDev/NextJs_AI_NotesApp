@@ -9,7 +9,7 @@ type Props = {
 const NewNoteButton = ({ user }: Props) => {
   console.log(user?.email);
 
-  return <div className="">New Note ....</div>;
+  return <div className="">New Note</div>;
 };
 
 export default NewNoteButton;

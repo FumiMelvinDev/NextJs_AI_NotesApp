@@ -21,7 +21,7 @@ const Home = async ({ searchParams }: Props) => {
   });
 
   return (
-    <div className="flex h-full items-center gap-4">
+    <div className="flex flex-col h-full items-center gap-4">
       <div className="flex w-full max-w-4xl justify-end gap-2">
         <AskAIButton user={user} />
         <NewNoteButton user={user} />
