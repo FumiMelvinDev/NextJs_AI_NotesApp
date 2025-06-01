@@ -27,3 +27,26 @@ export const updateNoteAction = async (noteId: string, text: string) => {
     return handleError(error);
   }
 };
+
+export const createNoteAction = async (noteId: string) => {
+  try {
+    const user = await getUser();
+
+    if (!user) {
+      throw new Error("User not authenticated");
+    }
+
+    await prisma.note.create({
+      data: {
+        id: noteId,
+        authorId: user.id,
+        text: "",
+      },
+    });
+    return {
+      errorMessage: null,
+    };
+  } catch (error) {
+    return handleError(error);
+  }
+};
