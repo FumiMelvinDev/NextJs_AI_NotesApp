@@ -4,6 +4,7 @@ import Link from "next/link";
 import { ModeToggle } from "./DarkModeToggle";
 import LogoutButton from "./LogoutButton";
 import { getUser } from "@/auth/server";
+import { SidebarTrigger } from "./ui/sidebar";
 
 const Header = async () => {
   const user = await getUser();
@@ -13,7 +14,10 @@ const Header = async () => {
       style={{ boxShadow: shadow }}
     >
       <div className="flex w-full items-center justify-between px-4 py-2">
-        <h1 className="text-2xl font-bold">AI Notes App</h1>
+        <div className="flex items-center gap-4">
+          <SidebarTrigger />
+          <h1 className="text-2xl font-bold">AI Notes App</h1>
+        </div>
         <nav>
           <div className="flex items-center gap-4">
             {user ? (

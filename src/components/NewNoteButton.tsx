@@ -6,7 +6,6 @@ import { Loader2 } from "lucide-react";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
 import { v4 as uuidv4 } from "uuid";
-import { create } from "domain";
 import { toast } from "sonner";
 import { createNoteAction } from "@/actions/notes";
 
