@@ -15,7 +15,7 @@ export async function AppSidebar() {
   let notes: Note[] = [];
 
   if (user) {
-    notes = await prisma.note.findMany({
+    notes = await prisma.note?.findMany({
       where: {
         authorId: user.id,
       },
