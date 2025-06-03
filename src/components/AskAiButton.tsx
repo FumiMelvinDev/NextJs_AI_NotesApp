@@ -29,7 +29,7 @@ type Props = {
 const AskAIButton = ({ user }: Props) => {
   const router = useRouter();
 
-  const [isPending, setIsPending] = useTransition();
+  const [isPending, startTransition] = useTransition();
 
   const [open, setOpen] = useState(false);
   const [questionText, setQuestionText] = useState("");

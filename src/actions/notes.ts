@@ -139,21 +139,22 @@ export const askAIAboutNotesAction = async (
       role: "user",
       content: newQuestions[i],
     });
+
     if (responses.length > i) {
       messages.push({
         role: "assistant",
         content: responses[i],
       });
     }
-
-    const completion = await openai.chat.completions.create({
-      model: "gemini-2.0-flash",
-      messages,
-    });
-
-    return (
-      completion.choices[0].message.content ||
-      "A response could not be generated at this time."
-    );
   }
+
+  const completion = await openai.chat.completions.create({
+    model: "gemini-2.0-flash",
+    messages,
+  });
+
+  return (
+    completion.choices[0].message.content ||
+    "A response could not be generated at this time."
+  );
 };
