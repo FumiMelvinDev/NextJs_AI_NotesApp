@@ -82,16 +82,12 @@ export async function updateSession(request: NextRequest) {
         ).then((res) => res.json());
 
         const url = request.nextUrl.clone();
-        url.searchParams.set("noteId", newestNoteId);
+        url.searchParams.set("noteId", noteId);
 
         return NextResponse.redirect(url);
       }
     }
   }
-
-  // const {
-  //   data: { user },
-  // } = await supabase.auth.getUser();
 
   return supabaseResponse;
 }

@@ -5,7 +5,7 @@ import { toast } from "sonner";
 import { CardContent, CardFooter } from "./ui/card";
 import { Label } from "./ui/label";
 import { Input } from "./ui/input";
-import { startTransition, useTransition } from "react";
+import { useTransition } from "react";
 import { Button } from "./ui/button";
 import { Loader2 } from "lucide-react";
 import Link from "next/link";
@@ -19,7 +19,7 @@ const AuthForm = ({ type }: Props) => {
   const isLoginForm = type === "login";
   const router = useRouter();
 
-  const [isPending, startIsTransiction] = useTransition();
+  const [isPending, startTransition] = useTransition();
 
   const handleSubmit = (formdata: FormData) => {
     startTransition(async () => {
