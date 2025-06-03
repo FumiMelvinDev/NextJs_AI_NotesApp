@@ -91,7 +91,7 @@ const AskAIButton = ({ user }: Props) => {
   };
 
   return (
-    <Dialog open={open} onOpenChange={setOpen}>
+    <Dialog open={open} onOpenChange={handleOnOpenChange}>
       <form>
         <DialogTrigger asChild>
           <Button variant="secondary">Ask Gemini</Button>
